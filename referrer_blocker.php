@@ -107,6 +107,9 @@ function referrer_blocker()
 
                 // Check if the client referrer contains a spam referrer
                 if (strpos($clientRef, trim($referrer)) !== FALSE) {
+
+                    logBlockedRequest();
+
                     header('HTTP/1.0 404 Not Found');
                     echo "<h1>404 Not Found</h1>";
                     echo "The page that you have requested could not be found.";
@@ -232,7 +235,6 @@ function referrer_blocker_show()
  */
 function showDonateButton()
 {
-
     $file_path = GSPLUGINPATH . "/referrer_blocker/donate.txt";
 
     // If this file exists
@@ -248,4 +250,16 @@ function showDonateButton()
 
     // Return the value in the file
     return (bool)$tmp;
+}
+
+
+/**
+ * Log request
+ */
+function logBlockedRequest()
+{
+    $logBlocked = new GS_Logging_Class('referrer_blocker.log', false);
+    $logBlocked->add('IP_Address',$userid);
+    $logBlocked->add('Referrer', $_SERVER["HTTP_REFERER"]);
+    $logBlocked->save();
 }
