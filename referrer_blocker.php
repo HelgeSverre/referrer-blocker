@@ -77,7 +77,7 @@ function referrer_blocker_init()
  * Main routine, it essentially just does a check if your referrer is
  * in the list of spammy referrers, it ignores you ig you are whitelisted.
  */
-function referrer_blocker_main()
+function referrer_blocker()
 {
     // Initialize language files
     referrer_blocker_init();

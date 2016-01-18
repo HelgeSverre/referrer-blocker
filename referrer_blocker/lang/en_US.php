@@ -13,5 +13,5 @@ $i18n = array(
     'REFERRER_LIST_DESC'    => 'This of all spammy referrers that are checked against, feel free to use a custom list, one referrer per line',
     'SAVE_SETTINGS'         => 'Save Settings',
     'SAVE_SUCCESS'          => 'Saved file succesfully',
-    'SAVE_ERROR'            => 'Error Saving File',
+    'SAVE_ERROR'            => 'Error Saving File'
 );
