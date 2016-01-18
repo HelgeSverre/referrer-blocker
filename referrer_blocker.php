@@ -9,7 +9,7 @@ $thisfile = basename(__FILE__, ".php");
 register_plugin(
     $thisfile,
     'Referrer Blocker',
-    '1.0.0',
+    '1.1.0',
     'Helge Sverre',
     'https://helgesverre.com/',
     'Blocks access for common referrer spam sites, allows you to whitelist IP\'s',
