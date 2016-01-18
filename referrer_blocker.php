@@ -28,6 +28,8 @@ add_action('plugins-sidebar', 'createSideMenu', array($thisfile, 'Referrer Block
 add_action('settings-website-extras', 'referrer_block_donation_settings_form');
 add_action('settings-website', 'referrer_block_donation_settings');
 
+// Add link to referrer blocker logs on the support page
+add_action('support-extras', 'referrer_block_support');
 
 /**
  * Runs when the site settings are being saved,
@@ -44,6 +46,11 @@ function referrer_block_donation_settings()
             file_put_contents(GSPLUGINPATH . "/referrer_blocker/donate.txt", "1");
         }
     }
+}
+
+
+function referrer_block_support() {
+    echo '<li><p><a href="log.php?log=referrer_blocker.log">View Blocked Referrers Log</a></p></li>';
 }
 
 /**
@@ -259,7 +266,7 @@ function showDonateButton()
 function logBlockedRequest()
 {
     $logBlocked = new GS_Logging_Class('referrer_blocker.log', false);
-    $logBlocked->add('IP_Address',$userid);
+    $logBlocked->add('IP_Address', $_SERVER["REMOTE_ADDR"]);
     $logBlocked->add('Referrer', $_SERVER["HTTP_REFERER"]);
     $logBlocked->save();
 }
